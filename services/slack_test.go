@@ -25,7 +25,7 @@ func TestDeployExecute(t *testing.T) {
 			"Test Deployment through slack command",
 			"deploy helloplaybook chickenman",
 			&instance.Instance{PlaybookID: "helloplaybook", ID: "chickenman"},
-			map[string]*deployment.Playbook{"helloplaybook": &deployment.Playbook{ID: "helloplaybook"}},
+			map[string]*deployment.Playbook{"helloplaybook": {ID: "helloplaybook"}},
 			"Started deployment of helloplaybook/chickenman",
 			nil,
 		},
@@ -50,7 +50,7 @@ func TestSetvarExecute(t *testing.T) {
 
 	is := NewInstanceService(store.New())
 	tPlaybooks := map[string]*deployment.Playbook{
-		"helloplaybook": &deployment.Playbook{
+		"helloplaybook": {
 			ID:   "helloplaybook",
 			Vars: []string{"word", "bird"},
 		},
@@ -199,7 +199,7 @@ func TestDelete(t *testing.T) {
 			testcase.Args,
 			is,
 			map[string]*deployment.Playbook{
-				"helloplaybook": &deployment.Playbook{ID: "randomapp"},
+				"helloplaybook": {ID: "randomapp"},
 			},
 		)
 
